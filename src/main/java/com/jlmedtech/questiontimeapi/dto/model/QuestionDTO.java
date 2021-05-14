@@ -2,12 +2,14 @@ package com.jlmedtech.questiontimeapi.dto.model;
 
 public class QuestionDTO {
 
-	public final long id;
 	public String question;
 
-	public QuestionDTO(long id, String question) {
-		this.id = id;
-		this.question = question ;
+	public QuestionDTO(){
+
+	}
+
+	public QuestionDTO(String question) {
+		this.question = question;
 	}
 
 	public void setQuestion(String question) {
@@ -20,7 +22,6 @@ public class QuestionDTO {
 
 	@Override public String toString() {
 		return "QuestionDTO{" +
-				"id=" + id +
 				", question='" + question + '\'' +
 				'}';
 	}

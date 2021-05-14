@@ -1,26 +1,46 @@
 package com.jlmedtech.questiontimeapi.controler;
 
 import com.jlmedtech.questiontimeapi.dto.model.QuestionDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.jlmedtech.questiontimeapi.model.QuestionModel;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "${controllers.base.path}/question")
 public class QuestionController {
 
-	private static final List<QuestionDTO> questions = new ArrayList<>(Arrays.asList(
-			new QuestionDTO(0,"this is the first question"),
-			new QuestionDTO(1,"this is a test"),
-			new QuestionDTO(2,"An other question"),
-			new QuestionDTO(3,"last question")
-	));
+	private List<QuestionModel> realQuestions = Arrays.asList(
+			new QuestionModel(0, "first question", null),
+			new QuestionModel(1, "this is a test", null),
+			new QuestionModel(2, "An other question", null),
+			new QuestionModel(3, "last question", null)
+	);
 
-	@GetMapping("/questions")
-	public List<QuestionDTO> getQuestions(){
+	@GetMapping(name = "get all questions")
+	public List<QuestionDTO> getQuestions() {
+
+		// TODO: create a service to get questions
+		List<QuestionDTO> questions = new ArrayList<>();
+		realQuestions.stream().forEach(
+				questionModel -> {
+					questions.add(new QuestionDTO(questionModel.getQuestion()));
+				}
+		);
+
 		return questions;
+	}
+
+	@PostMapping(name = "add a question")
+	public void addQuestion(@RequestBody QuestionDTO newQuestion) {
+
+		//TODO: create a service to add a question
+		QuestionModel newQuestionModel = new QuestionModel(4, newQuestion.question, "");
+		realQuestions.add(newQuestionModel);
+
 	}
 
 }
