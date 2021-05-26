@@ -6,19 +6,21 @@ import com.jlmedtech.questiontimeapi.model.QuestionModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "${controllers.base.path}/question")
 public class QuestionController {
 
-	private List<QuestionModel> realQuestions = Arrays.asList(
-			new QuestionModel(0, "first question", null),
-			new QuestionModel(1, "this is a test", null),
-			new QuestionModel(2, "An other question", null),
-			new QuestionModel(3, "last question", null)
-	);
+	private List<QuestionModel> realQuestions;
+
+	QuestionController(){
+		realQuestions = new ArrayList<>();
+		realQuestions.add(new QuestionModel(0, "First question", null));
+		realQuestions.add(new QuestionModel(1, "this is a test", null));
+		realQuestions.add(new QuestionModel(2, "An other question", null));
+		realQuestions.add(new QuestionModel(3, "last question", null));
+	}
 
 	@GetMapping(name = "get all questions")
 	public List<QuestionDTO> getQuestions() {
