@@ -33,6 +33,12 @@ if you don't want to bother with this you can just run the docker to run this ap
 
 ### with local setting
 
+fetch dependencies :
+
+```bash 
+/mvnw -U dependency:resolve
+```
+
 to start server the webserver API just run :
 
 ```bash

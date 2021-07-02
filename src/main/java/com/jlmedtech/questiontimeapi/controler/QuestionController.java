@@ -12,20 +12,20 @@ import java.util.List;
 @RequestMapping(value = "${controllers.base.path}/question")
 public class QuestionController {
 
-	@Autowired
-	private IQuestionService questionService;
+    @Autowired
+    private IQuestionService questionService;
 
-	@GetMapping(name = "get all questions")
-	public List<QuestionDTO> getQuestions() {
+    @GetMapping(name = "get all questions")
+    public List<QuestionDTO> getQuestions() {
 
-		return questionService.getQuestions();
+        return questionService.getQuestions();
 
-	}
+    }
 
-	@PostMapping(name = "add a question")
-	public ResponseEntity<QuestionDTO> addQuestion(@RequestBody QuestionDTO newQuestion) {
+    @PostMapping(name = "add a question")
+    public ResponseEntity<QuestionDTO> addQuestion(@RequestBody QuestionDTO newQuestion) {
 
-		return ResponseEntity.ok(questionService.addQuestion(newQuestion));
-	}
+        return ResponseEntity.ok(questionService.addQuestion(newQuestion));
+    }
 
 }
