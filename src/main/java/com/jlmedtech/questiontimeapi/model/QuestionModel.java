@@ -1,15 +1,19 @@
 package com.jlmedtech.questiontimeapi.model;
 
+import java.util.List;
+
 public class QuestionModel {
 
 	private final long id;
-	private String question;
-	private String response;
 
-	public QuestionModel(long id, String question, String response ) {
+	private String question;
+
+	private List<String> responses;
+
+	public QuestionModel(long id, String question, List<String> responses ) {
 		this.id = id;
 		this.question = question;
-		this.response = response;
+		this.responses = responses;
 	}
 
 	public long getId() {
@@ -24,19 +28,19 @@ public class QuestionModel {
 		this.question = question;
 	}
 
-	public String getResponse() {
-		return response;
+	public List<String> getResponse() {
+		return responses;
 	}
 
-	public void setResponse(String response) {
-		this.response = response;
+	public void setResponse(List<String> responses) {
+		this.responses = responses;
 	}
 
 	@Override public String toString() {
 		return "QuestionModel{" +
 				"id=" + id +
 				", question='" + question + '\'' +
-				", response='" + response + '\'' +
+				", response='" + responses + '\'' +
 				'}';
 	}
 }

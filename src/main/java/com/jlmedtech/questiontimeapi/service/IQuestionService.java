@@ -1,13 +1,16 @@
 package com.jlmedtech.questiontimeapi.service;
 
-import com.jlmedtech.questiontimeapi.dto.model.QuestionDTO;
+import com.jlmedtech.questiontimeapi.dto.QuestionDTO;
+import com.jlmedtech.questiontimeapi.model.QuestionModel;
 
 import java.util.List;
 
 public interface IQuestionService {
 
-	List<QuestionDTO> getQuestions();
+	List<QuestionModel> getQuestions();
 
-	QuestionDTO addQuestion(QuestionDTO question);
+	QuestionModel getQuestion(Integer id);
+
+	QuestionModel addQuestion(QuestionModel question);
 
 }
