@@ -39,6 +39,7 @@ test:
 generated-sources:
   stage: build
   script: 
+    - 'git submodule update --init'
     - 'mvn $MAVEN_CLI_OPTS generate-sources compile'
   artifacts:
     paths:
