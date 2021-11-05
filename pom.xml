@@ -2,22 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.jlmedtech</groupId>
 	<artifactId>question-time-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>question-time-api</name>
-	<description>REST api to ask questions </description>
+	<description>REST api to ask questions</description>
 
 	<properties>
 		<java.version>16</java.version>
 		<dep.org.mapstruct.version>1.4.2.Final</dep.org.mapstruct.version>
-		<dep.com.google.protobuf.version>3.19.0</dep.com.google.protobuf.version>
+		<dep.com.google.protobuf.version>3.19.1</dep.com.google.protobuf.version>
 		<dep.cucumber.version>7.0.0</dep.cucumber.version>
 	</properties>
 
@@ -64,15 +66,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>${dep.cucumber.version}</version>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
-		<plugins>
+			<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -141,11 +143,23 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<properties>
 						<!-- Work around. Surefire does not include enough
-                             information to disambiguate between different
-                             examples and scenarios. -->
+							 information to disambiguate between different
+							 examples and scenarios. -->
 						<configurationParameters>
 							cucumber.junit-platform.naming-strategy=long
 						</configurationParameters>

@@ -5,7 +5,7 @@ import com.jlmedtech.questiontimeapi.model.QuestionModel;
 
 import java.util.List;
 
-public interface IQuestionService {
+public interface QuestionService {
 
 	List<QuestionModel> getQuestions();
 
