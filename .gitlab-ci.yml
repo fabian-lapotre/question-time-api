@@ -39,7 +39,7 @@ test:
 generated-sources:
   stage: build
   script: 
-    - 'mvn $MAVEN_CLI_OPTS generate-source compile'
+    - 'mvn $MAVEN_CLI_OPTS generate-sources compile'
   artifacts:
     paths:
       - target/question-time-api*.jar
