@@ -22,7 +22,7 @@ cache:
   script:
     - 'mvn $MAVEN_CLI_OPTS verify'
   rules:
-    if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
   artifacts:
     paths:
       - target/question-time-api*.jar
@@ -32,17 +32,8 @@ test:
   stage: test
   script:
     - 'mvn $MAVEN_CLI_OPTS test'
-  only: merge_request
-
-# For any commit requests do not `verify` but only run `test`.
-build:
-  stage: build 
-  script:
-    - 'mvn $MAVEN_CLI_OPTS package'
-  only: main
-  artifacts:
-    paths:
-      - target/question-time-api*.jar
+  rules:
+    - if: ''
 
 # Verify merge requests using JDK8
 verify:
@@ -50,7 +41,6 @@ verify:
 
 stages:
   - test
-  - build
 
 # To deploy packages from CI, create a ci_settings.xml file
 # For deploying packages to GitLab's Maven Repository: See https://docs.gitlab.com/ee/user/packages/maven_repository/index.html#create-maven-packages-with-gitlab-cicd for more details.
