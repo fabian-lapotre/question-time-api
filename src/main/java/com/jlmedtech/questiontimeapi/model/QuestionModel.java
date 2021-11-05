@@ -28,11 +28,11 @@ public class QuestionModel {
 		this.question = question;
 	}
 
-	public List<String> getResponse() {
+	public List<String> getResponses() {
 		return responses;
 	}
 
-	public void setResponse(List<String> responses) {
+	public void setResponses(List<String> responses) {
 		this.responses = responses;
 	}
 
