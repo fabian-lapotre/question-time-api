@@ -1,7 +1,8 @@
 package com.jlmedtech.questiontimeapi.service.impl;
 
 import com.jlmedtech.questiontimeapi.model.QuestionModel;
-import com.jlmedtech.questiontimeapi.service.IQuestionService;
+import com.jlmedtech.questiontimeapi.repository.QuestionsRepository;
+import com.jlmedtech.questiontimeapi.service.QuestionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -10,35 +11,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuestionServiceImpl implements IQuestionService {
+public class QuestionServiceImpl implements QuestionService {
 
     private static final Logger log = LoggerFactory.getLogger(QuestionServiceImpl.class);
 
-    private List<QuestionModel> realQuestions;
+    private QuestionsRepository questionsRepository;
 
-    QuestionServiceImpl() {
-        realQuestions = new ArrayList<>();
-        realQuestions.add(new QuestionModel(0,"first question",null));
-        realQuestions.add(new QuestionModel(1,"second question",null));
-        realQuestions.add(new QuestionModel(2,"an other question",null));
-        realQuestions.add(new QuestionModel(3,"last question",null));
+    public QuestionServiceImpl(QuestionsRepository questionsRepository) {
+        this.questionsRepository = questionsRepository;
     }
 
     @Override
     public List<QuestionModel> getQuestions() {
-        log.debug("[service]: sending questions: ", realQuestions);
-        return realQuestions;
+        List<QuestionModel> questions = questionsRepository.get();
+        log.debug("[service]: sending questions: ", questions);
+        return questions;
     }
 
     @Override
     public QuestionModel getQuestion(Integer id) {
-        return realQuestions.get(id);
+        return questionsRepository.get(id);
     }
 
     @Override
     public QuestionModel addQuestion(QuestionModel question) {
-        Integer newItemId = realQuestions.size();
-        realQuestions.add(question);
+        questionsRepository.add(question);
         return question;
     }
 }

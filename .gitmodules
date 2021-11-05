@@ -1,3 +1,3 @@
 [submodule "src/main/resources/question-time-proto"]
-	path = src/main/resources/question-time-proto
-	url = git@fabianlapotre.gitlab.com:fabianProjects/question-time/interface-description-messages/question-time-proto.git
+  path = src/main/resources/question-time-proto
+  url = ../../interface-description-messages/question-time-proto.git
