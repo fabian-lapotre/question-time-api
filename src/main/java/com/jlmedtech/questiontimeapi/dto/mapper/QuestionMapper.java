@@ -14,11 +14,11 @@ public interface QuestionMapper {
     QuestionMapper INSTANCE = Mappers.getMapper(QuestionMapper.class);
 
     @Mapping(source = "question", target = "questionString")
-    @Mapping(source = "response", target = "answersList")
+    @Mapping(source = "responses", target = "answersList")
     QuestionDTO.Question questionModelToQuestionDTO(QuestionModel question);
 
     @Mapping(source = "questionString", target = "question")
-    @Mapping(source = "answersList", target = "response")
+    @Mapping(source = "answersList", target = "responses")
     QuestionModel questionDTOToQuestionModel(QuestionDTO.Question question);
 
 }

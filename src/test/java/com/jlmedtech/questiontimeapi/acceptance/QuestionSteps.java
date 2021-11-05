@@ -7,21 +7,21 @@ import io.cucumber.java.en.When;
 public class QuestionSteps {
 
         @Given("student ask for question")
-        public void student_ask_for_question(){
+        public void studentAskForQuestion(){
         }
 
         @When("student as no answer question")
-        public void student_as_no_answer_question(){
+        public void studentAsNoAnswerQuestion(){
 
         }
 
         @Then("give him the question")
-        public void give_him_the_question(){
+        public void giveHimTheQuestion(){
 
         }
 
         @When("student as already answer question")
-        public void student_as_already_answer_question(){
+        public void studentAsAlreadyAnswerQuestion(){
 
         }
 

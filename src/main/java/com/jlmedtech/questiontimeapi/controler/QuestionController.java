@@ -3,7 +3,7 @@ package com.jlmedtech.questiontimeapi.controler;
 import com.jlmedtech.questiontimeapi.dto.QuestionDTO;
 import com.jlmedtech.questiontimeapi.dto.mapper.QuestionMapper;
 import com.jlmedtech.questiontimeapi.model.QuestionModel;
-import com.jlmedtech.questiontimeapi.service.IQuestionService;
+import com.jlmedtech.questiontimeapi.service.QuestionService;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +20,11 @@ public class QuestionController {
 
     private static final Logger log = LoggerFactory.getLogger(QuestionController.class);
 
-    private IQuestionService questionService;
+    private QuestionService questionService;
 
     private QuestionMapper questionMapper = Mappers.getMapper(QuestionMapper.class);
 
-    public QuestionController(IQuestionService questionService) {
+    public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
 
