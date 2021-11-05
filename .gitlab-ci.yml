@@ -1,6 +1,7 @@
 image: maven:3.8.1-adoptopenjdk-16
 
 stages:
+  - build
   - test
 
 variables:
@@ -34,6 +35,15 @@ test:
   script:
     - 'mvn $MAVEN_CLI_OPTS test'
 
+
+generated-sources:
+  stage: build
+  script: 
+    - 'mvn $MAVEN_CLI_OPTS generate-source compile'
+  artifacts:
+    paths:
+      - target/question-time-api*.jar
+      - target/generated-sources/protobuf/*
 # To deploy packages from CI, create a ci_settings.xml file
 # For deploying packages to GitLab's Maven Repository: See https://docs.gitlab.com/ee/user/packages/maven_repository/index.html#create-maven-packages-with-gitlab-cicd for more details.
 # Please note: The GitLab Maven Repository is currently only available in GitLab Premium / Ultimate.
